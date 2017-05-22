@@ -1,22 +1,33 @@
+import org.junit.Assert;
+import org.junit.Test;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import ru.forge.twice_a_day.classes.models.contact.Contact;
 import ru.forge.twice_a_day.classes.models.contact.ContactService;
 
 import java.util.List;
 
-
 public class startTest {
-    public static void main(String[] args) {
+
+    private GenericXmlApplicationContext getContext(){
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
         ctx.load("classpath:META-INF/spring/spring-data.xml");
         ctx.refresh();
+        return ctx;
+    }
 
-        ContactService contactService = ctx.getBean("contactService",ContactService.class);
+    @Test
+    public void createContextTest() {
+        assert ( getContext()!=null);
+    }
 
+    @Test
+    public void checkContactService(){
+        ContactService contactService = getContext().getBean("contactService",ContactService.class);
         List<Contact> contacts = contactService.findAllContacts();
-        for (int i = 0; i <contacts.size() ; i++) {
-            System.out.println(contacts.get(i));
+        for(Contact contact:contacts){
+            System.out.println(contact);
         }
+        Assert.assertTrue(contacts.size()!=0);
     }
 
 }

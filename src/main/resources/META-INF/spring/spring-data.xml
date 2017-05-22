@@ -18,10 +18,10 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
-          p:password="2wsxXSW@"
-          p:username="root"
-          p:driverClassName="com.mysql.jdbc.Driver"
-          p:url="jdbc:mysql://localhost:3306/mydb" />
+          p:password="${jdbc.password}"
+          p:username="${jdbc.userName}"
+          p:driverClassName="${jdbc.driverClassName}"
+          p:url="${jdbc.url}" />
 
     <jdbc:initialize-database data-source="dataSource">
         <jdbc:script location="classpath:META-INF/sql/contactCreateScript.sql" />
@@ -55,6 +55,7 @@
 
     <context:annotation-config/>
     <context:component-scan base-package="ru.forge.twice_a_day.classes" />
+    <context:property-placeholder location="classpath:META-INF/conf/jdbc.properties" />
 
     <jpa:repositories base-package="ru.forge.twice_a_day"
                       entity-manager-factory-ref="emf"
