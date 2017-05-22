@@ -24,6 +24,7 @@ public class startTest {
     public void checkContactService(){
         ContactService contactService = getContext().getBean("contactService",ContactService.class);
         List<Contact> contacts = contactService.findAllContacts();
+
         for(Contact contact:contacts){
             System.out.println(contact);
         }
