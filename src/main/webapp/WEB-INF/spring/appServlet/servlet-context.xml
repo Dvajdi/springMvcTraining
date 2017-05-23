@@ -14,6 +14,7 @@
     <mvc:annotation-driven />
 
     <mvc:resources mapping="/resources/**" location="/, WEB-INF/resources/" />
+    <mvc:default-servlet-handler/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="WEB-INF/views/" />
@@ -28,7 +29,8 @@
     </mvc:interceptors>
 
     <bean class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
-          p:basename="WEB-INF/i18n/messages,WEB-INF/i18n/application"
+          id="messageSource"
+          p:basenames="WEB-INF/i18n/messages,WEB-INF/i18n/application"
           p:fallbackToSystemLocale="false"/>
 
     <bean class="org.springframework.web.servlet.i18n.CookieLocaleResolver"
