@@ -28,5 +28,9 @@ public class ContactServiceImpl implements ContactService{
         return contactRepository.findOne(id);
     }
 
+    public void save(Contact contact) {
+        contactRepository.save(contact);
+    }
+
 
 }
