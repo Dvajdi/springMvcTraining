@@ -26,9 +26,15 @@
           p:viewClass="org.springframework.web.servlet.view.tiles3.TilesView"/>
 
     <bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer"
-          id="tilesConfigurer"
-          p:definitions="/WEB-INF/layouts/layouts.xml,/WEB-INF/views/**/views.xml"
-    />
+          id="tilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>/WEB-INF/layouts/layouts.xml</value>
+                <value>/WEB-INF/views/**/views.xml</value>
+            </list>
+        </property>
+    </bean>
+
 
     <context:component-scan base-package="ru.forge.twice_a_day" />
 

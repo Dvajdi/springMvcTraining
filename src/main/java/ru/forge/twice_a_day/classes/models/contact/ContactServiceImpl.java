@@ -24,6 +24,9 @@ public class ContactServiceImpl implements ContactService{
         return Lists.newArrayList(contactRepository.findAll());
     }
 
+    public Contact findById(Long id) {
+        return contactRepository.findOne(id);
+    }
 
 
 }
