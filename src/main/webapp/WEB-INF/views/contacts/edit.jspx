@@ -45,7 +45,7 @@
         <form:label path="birthDate">
             ${labelContactBirthDate}
         </form:label>
-        <form:input path="birthDate" />
+        <form:input path="birthDate" id="birthDate"/>
             <div>
                 <form:errors path="birthDate" cssClass="error" />
             </div>
@@ -59,12 +59,32 @@
         </div>
         <p/>
 
+
         <form:hidden path="version" />
 
-        <button type="submit">Save</button>
-        <button type="reset">Cancel</button>
+        <button type="submit" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+            <span class="ui-button-text">Save</span>
+        </button>
+        <button type="reset" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+            <span class="ui-button-text">Cancel</span>
+        </button>
 
     </form:form>
     </div>>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#birthDate').datepicker(
+                {dateFormat:'yy-mm-dd',
+                    changeYear:true}
+            );
+            $("#contactDescription").ckeditor(
+                {
+                    toolbar:"Basic",
+                    uiColor:"#CCCCCC"
+                }
+            )
+        })
+    </script>
 
 </jsp:root>
