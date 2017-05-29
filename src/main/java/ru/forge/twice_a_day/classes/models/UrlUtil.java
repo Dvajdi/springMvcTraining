@@ -1,5 +1,7 @@
 package ru.forge.twice_a_day.classes.models;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 

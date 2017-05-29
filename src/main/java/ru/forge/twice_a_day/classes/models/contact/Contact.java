@@ -1,10 +1,12 @@
 package ru.forge.twice_a_day.classes.models.contact;
 
 import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.joda.time.DateTime;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
@@ -31,6 +33,8 @@ public class Contact implements Serializable{
         return version;
     }
 
+    @NotEmpty(message = "{validation.firstname.NotEmpty.message}")
+    @Size(min=3,max=45, message="{validation.firstname.Size.message}")
     @Column(name="first_name")
     public String getFirstName() {
         return firstName;

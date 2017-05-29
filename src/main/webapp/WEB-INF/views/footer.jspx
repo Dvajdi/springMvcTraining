@@ -2,7 +2,7 @@
      xmlns:jsp="http://java.sun.com/JSP/Page"
      xmlns:spring="http://www.springframework.org/tags"
      version="2.0">
-    <jsp:directive.page contentType="text/html; ISO-8859-1;charset=UTF-8"/>
+    <jsp:directive.page contentType="text/html; charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
 
     <spring:message code="home_text" var="homeText"/>
@@ -11,6 +11,7 @@
     <spring:url value="/contacts" var="homeUrl" />
 
     <a href="${homeUrl}">${homeUrl}</a>
+    <p/>
     <a href="${homeUrl}?lang=zh_HK">${labelZhHk}</a>
     <a href="${homeUrl}?lang=en_US">${labelEnUs}</a>
 
