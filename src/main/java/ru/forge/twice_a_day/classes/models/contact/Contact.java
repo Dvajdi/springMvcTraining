@@ -3,10 +3,12 @@ package ru.forge.twice_a_day.classes.models.contact;
 import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.joda.time.DateTime;
+import org.springframework.data.annotation.Transient;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.beans.*;
 import java.io.Serializable;
 
 @Entity
@@ -50,6 +52,15 @@ public class Contact implements Serializable{
     @DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
     public DateTime getBirthDate() {
         return birthDate;
+    }
+
+    @javax.persistence.Transient
+    public String getBirthDateString() {
+        String birthDateString = "";
+        if (birthDate != null)
+            birthDateString = org.joda.time.format.DateTimeFormat
+                    .forPattern("yyyy-MM-dd").print(birthDate);
+        return birthDateString;
     }
 
     @Column(name="description")
