@@ -56,8 +56,12 @@
 
     <h2>${labelContactList}</h2>
 
+    <h1>Привет!!!!</h1>
     <div>
-        <table id="list"><tr><td/></tr></table>
+        <div>
+            <table id="list"><tr><td/></tr></table>
+        </div>
+        <div id="pager"></div>
     </div>
-    <div id="pager"></div>
+    <h1>Пока!!!!</h1>
 </div>
