@@ -66,4 +66,6 @@
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
         <property name="validationMessageSource" ref="messageSource"/>
     </bean>
+    <bean class="org.springframework.web.multipart.support.StandardServletMultipartResolver"
+          id="multipartResolver"/>
 </beans>
