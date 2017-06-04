@@ -1,6 +1,8 @@
 package ru.forge.twice_a_day.classes.controllers;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
@@ -28,6 +30,8 @@ public class SecurityController {
       ));
 
         uiModel.addAttribute("message",message);
-    return "/contacts/list";
+    return "contacts/list";
   }
+
+
 }
