@@ -12,7 +12,9 @@
     <spring:url value="/contacts?form" var="addContactUrl"/>
 
     <spring:message code="label_login" var="labelLogin"/>
+
     <spring:url var="loginUrl" value="/j_spring_security_check" />
+
 
     <h3>${menuHeaderText}</h3>
     <sec:authorize access="hasRole('ROLE_USER')">
@@ -40,4 +42,6 @@
             </form>
         </div>
     </sec:authorize>
+
+
 </div>

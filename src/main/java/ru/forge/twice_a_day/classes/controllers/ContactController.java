@@ -63,6 +63,7 @@ public class ContactController {
         return "contacts/show";
     }
 
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.POST)
     public String update(@Valid Contact contact, BindingResult bindingResult, Model uiModel,
                          HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes,
@@ -98,6 +99,7 @@ public class ContactController {
                 httpServletRequest);
     }
 
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
     public String updateForm(@PathVariable("id") Long id, Model uiModel) {
         uiModel.addAttribute("contact", contactService.findById(id));
