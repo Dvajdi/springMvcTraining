@@ -11,4 +11,5 @@ public interface ContactService {
     Contact findById(Long id);
     Contact save(Contact contact);
     Page<Contact> findAllByPage(Pageable pageable);
+
 }

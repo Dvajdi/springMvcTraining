@@ -57,7 +57,7 @@
     <context:component-scan base-package="ru.forge.twice_a_day.classes" />
     <context:property-placeholder location="classpath:META-INF/conf/jdbc.properties" />
 
-    <jpa:repositories base-package="ru.forge.twice_a_day"
+    <jpa:repositories base-package="ru.forge.twice_a_day.classes.models"
                       entity-manager-factory-ref="emf"
                       transaction-manager-ref="transactionManager"/>
 </beans>
