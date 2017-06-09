@@ -13,9 +13,9 @@ import java.util.List;
 @Service("orderService")
 public class OrderServiceImpl implements OrderService {
     @Autowired
-    OrderRepository orderRepository;
+    private OrderRepository orderRepository;
 
-    public List<Order> orders() {
+    public List<Order> findAllOrders() {
         return Lists.newArrayList(orderRepository.findAll());
     }
 

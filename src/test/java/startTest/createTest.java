@@ -1,3 +1,5 @@
+package startTest;
+
 import org.junit.Test;
 import org.springframework.context.support.GenericXmlApplicationContext;
 

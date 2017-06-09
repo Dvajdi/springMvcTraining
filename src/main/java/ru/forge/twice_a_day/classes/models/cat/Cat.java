@@ -3,17 +3,15 @@ package ru.forge.twice_a_day.classes.models.cat;
 import javax.persistence.*;
 import java.io.Serializable;
 
-/**
- * Created by twice on 09.06.17.
- */
+
 @Entity
-@Table(name="cats")
+@Table(name="cat")
 public class Cat implements Serializable {
     private Long id;
     private String name;
 
     @Id
-    @Column(name="name")
+    @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
@@ -30,5 +28,13 @@ public class Cat implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Cat{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
