@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 
@@ -20,6 +22,9 @@ public class ContactServiceImpl implements ContactService{
 
     @Autowired
     private ContactRepository contactRepository;
+
+    @PersistenceContext
+    private EntityManager em;
 
     @Transactional(readOnly = true)
     public List<Contact> findAllContacts() {
@@ -32,8 +37,20 @@ public class ContactServiceImpl implements ContactService{
     }
 
     public Contact save(Contact contact) {
-        return contactRepository.save(contact);
+        if(contact.getId()==null){
+            em.persist(contact);
+        }else{
+            em.merge(contact);
+        }
+        return contact;
     }
+
+    public void delete(Contact contact) {
+        Contact contactMerge = em.merge(contact);
+        em.remove(contactMerge);
+    }
+
+
     @Transactional(readOnly = true)
     public Page<Contact> findAllByPage(Pageable pageable) {
         return contactRepository.findAll(pageable);

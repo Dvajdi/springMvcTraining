@@ -10,6 +10,7 @@ public interface ContactService {
     List<Contact> findAllContacts();
     Contact findById(Long id);
     Contact save(Contact contact);
+    void delete(Contact contact);
     Page<Contact> findAllByPage(Pageable pageable);
 
 }

@@ -17,11 +17,36 @@ import java.util.List;
 public class ContactServiceTest {
 
     @Test
-    public void checkContactService(){
+    public void checkCreateContactService(){
         ContactService contactService = ContextUtils.getContext().getBean("contactService",ContactService.class);
         List<Contact> contacts = contactService.findAllContacts();
         PrintUtils.listEntities(contacts);
         Assert.assertTrue(contacts.size()!=0);
+    }
+
+    @Test
+    public void contactSaveTest(){
+        ContactService contactService = ContextUtils.getContext().getBean("contactService",ContactService.class);
+        List<Contact> contacts = contactService.findAllContacts();
+        int contactsQuantity = contacts.size();
+
+        Contact contact = new Contact();
+        contact.setFirstName("Pavel");
+        contact.setLastName("MMMMM");
+        contactService.save(contact);
+        Assert.assertTrue(contactsQuantity<contactService.findAllContacts().size());
+    }
+
+    @Test
+    public void deleteContactTest(){
+        ContactService contactService = ContextUtils.getContext().getBean("contactService",ContactService.class);
+        List<Contact> contacts = contactService.findAllContacts();
+        int contactsQuantity = contacts.size();
+
+        Contact contact = contacts.get(contactsQuantity-1);
+        contactService.delete(contact);
+
+        Assert.assertTrue(contactsQuantity-contactService.findAllContacts().size()==1);
     }
 
 

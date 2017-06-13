@@ -14,42 +14,51 @@ import java.io.Serializable;
 @Entity
 @Table(name="contact")
 public class Contact implements Serializable{
-    private Long id;
-    private int version;
-    private String firstName;
-    private String lastName;
-    private DateTime birthDate;
-    private String description;
-    private byte [] photo;
-
     @Id
     @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Version
+    @Column(name="version")
+    private int version;
+    @NotEmpty(message = "{validation.firstname.NotEmpty.message}")
+    @Size(min=3,max=45, message="{validation.firstname.Size.message}")
+    @Column(name="first_name")
+    private String firstName;
+    @Column(name="last_name")
+    private String lastName;
+    @Column(name = "BIRTH_DATE")
+    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
+    @DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
+    private DateTime birthDate;
+    @Column(name="description")
+    private String description;
+    @Column(name="photo")
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    private byte [] photo;
+
+
     public Long getId() {
         return id;
     }
 
-    @Version
-    @Column(name="version")
+
     public int getVersion() {
         return version;
     }
 
-    @NotEmpty(message = "{validation.firstname.NotEmpty.message}")
-    @Size(min=3,max=45, message="{validation.firstname.Size.message}")
-    @Column(name="first_name")
+
     public String getFirstName() {
         return firstName;
     }
 
-    @Column(name="last_name")
+
     public String getLastName() {
         return lastName;
     }
 
-    @Column(name = "BIRTH_DATE")
-    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-    @DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
+
     public DateTime getBirthDate() {
         return birthDate;
     }
@@ -63,14 +72,12 @@ public class Contact implements Serializable{
         return birthDateString;
     }
 
-    @Column(name="description")
+
     public String getDescription() {
         return description;
     }
 
-    @Column(name="photo")
-    @Lob
-    @Basic(fetch = FetchType.LAZY)
+
     public byte[] getPhoto() {
         return photo;
     }
