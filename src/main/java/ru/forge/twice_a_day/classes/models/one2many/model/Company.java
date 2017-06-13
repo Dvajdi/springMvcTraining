@@ -19,8 +19,8 @@ import org.json.JSONObject;
 @Table(name="company")
 public class Company implements Serializable{
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
     private String name;
     
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

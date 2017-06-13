@@ -22,4 +22,14 @@ public class CompanyServiceImpl implements CompanyService{
     public List<Company> listAll() {
         return Lists.newArrayList(companyRepository.findAll());
     }
+
+    @Override
+    public Company findById(Long id) {
+        return companyRepository.findOne(id);
+    }
+
+    @Override
+    public Company save(Company company) {
+        return companyRepository.save(company);
+    }
 }

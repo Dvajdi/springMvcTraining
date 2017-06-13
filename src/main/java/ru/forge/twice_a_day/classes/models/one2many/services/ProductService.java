@@ -7,4 +7,7 @@ import java.util.List;
 
 public interface ProductService {
     List<Product> listAll();
+    Product findById(Long id);
+    Product save(Product product);
+
 }

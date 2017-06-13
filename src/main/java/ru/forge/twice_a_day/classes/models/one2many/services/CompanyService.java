@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface CompanyService {
     List<Company> listAll();
+    Company findById(Long id);
+    Company save(Company company);
 }
