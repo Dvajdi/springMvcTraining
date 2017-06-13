@@ -21,20 +21,19 @@ public class GoOneToMany {
             System.out.println(company);
         }
 
+        companyService.save(new Company("Конторка"));
+
         ProductService productService = ctx.getBean("productService",ProductService.class);
 
-        Company company =companies.get(companies.size()-1);
-        System.out.println("");
-        System.out.println(company);
-        System.out.println("");
         Product prod = new Product();
         prod.setName("РЫБА");
         prod.setCompany(companies.get(companies.size()-1));
-       ;
         productService.save(prod);
+
+
         List<Product> products = productService.listAll();
-        /*for(Product product:products){
+        for(Product product:products){
             System.out.println(product);
-        }*/
+        }
     }
 }

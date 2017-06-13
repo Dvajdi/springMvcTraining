@@ -20,8 +20,6 @@ public class Product implements Serializable{
     @JoinColumn(name = "company_id")
     private Company company;
 
-
-
     public Product(){
     }
     

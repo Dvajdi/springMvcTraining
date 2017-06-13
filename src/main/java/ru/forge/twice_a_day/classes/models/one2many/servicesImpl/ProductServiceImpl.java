@@ -44,4 +44,14 @@ public class ProductServiceImpl implements ProductService{
         }
         return product;
     }
+
+    @Override
+    public void delete(Product product) {
+        Product mergeProduct = em.merge(product);
+        em.remove(mergeProduct);
+    }
+
+
+
+
 }

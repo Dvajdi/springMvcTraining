@@ -9,6 +9,8 @@ import ru.forge.twice_a_day.classes.models.one2many.model.Company;
 import ru.forge.twice_a_day.classes.models.one2many.repository.CompanyRepository;
 import ru.forge.twice_a_day.classes.models.one2many.services.CompanyService;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Service("companyService")
@@ -17,6 +19,9 @@ import java.util.List;
 public class CompanyServiceImpl implements CompanyService{
     @Autowired
     CompanyRepository companyRepository;
+
+    @PersistenceContext
+    EntityManager em;
 
     @Override
     public List<Company> listAll() {
@@ -30,6 +35,17 @@ public class CompanyServiceImpl implements CompanyService{
 
     @Override
     public Company save(Company company) {
-        return companyRepository.save(company);
+        if(company.getId()==null){
+            em.persist(company);
+        }else{
+            em.merge(company);
+        }
+        return company;
+    }
+
+    @Override
+    public void delete(Company company) {
+        Company mergeCompany = em.merge(company);
+        em.remove(mergeCompany);
     }
 }
