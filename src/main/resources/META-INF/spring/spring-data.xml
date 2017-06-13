@@ -54,7 +54,7 @@
     </bean>
 
     <context:annotation-config/>
-    <context:component-scan base-package="ru.forge.twice_a_day.classes" />
+    <context:component-scan base-package="ru.forge.twice_a_day.classes.models" />
     <context:property-placeholder location="classpath:META-INF/conf/jdbc.properties" />
 
     <jpa:repositories base-package="ru.forge.twice_a_day.classes.models"
