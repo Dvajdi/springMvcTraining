@@ -1,13 +1,13 @@
-package ru.forge.twice_a_day.classes.sampels.one2many.servicesImpl;
+package ru.forge.twice_a_day.classes.models.sampels.one2many.servicesImpl;
 
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.forge.twice_a_day.classes.sampels.one2many.model.Company;
-import ru.forge.twice_a_day.classes.sampels.one2many.repository.CompanyRepository;
-import ru.forge.twice_a_day.classes.sampels.one2many.services.CompanyService;
+import ru.forge.twice_a_day.classes.models.sampels.one2many.model.Company;
+import ru.forge.twice_a_day.classes.models.sampels.one2many.repository.CompanyRepository;
+import ru.forge.twice_a_day.classes.models.sampels.one2many.services.CompanyService;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
