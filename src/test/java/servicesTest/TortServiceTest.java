@@ -30,9 +30,7 @@ public class TortServiceTest {
     Tort tort = new Tort();
     tort.setName("Апельсиновый");
     tort.setDescription("Рекомендуем");
-
     tortService.save(tort);
-
     Assert.assertTrue(tortService.findAllTorts().size()-tortQuantity==1);
   }
 

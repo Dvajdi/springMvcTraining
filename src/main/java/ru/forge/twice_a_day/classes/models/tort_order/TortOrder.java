@@ -14,10 +14,16 @@ public class TortOrder implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private Long id;
+
+
     @Column(name="order_date")
     @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     @DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
     private DateTime orderDate;
+
+
+
+
 
     public Long getId() {
         return id;
@@ -34,6 +40,9 @@ public class TortOrder implements Serializable {
     public void setOrderDate(DateTime orderDate) {
         this.orderDate = orderDate;
     }
+
+
+
 
     @Override
     public String toString() {
