@@ -1,7 +1,7 @@
-package ru.forge.twice_a_day.classes.models.one2many.services;
+package ru.forge.twice_a_day.classes.sampels.one2many.services;
 
 
-import ru.forge.twice_a_day.classes.models.one2many.model.Company;
+import ru.forge.twice_a_day.classes.sampels.one2many.model.Company;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package ru.forge.twice_a_day.classes.models.one2many;
+package ru.forge.twice_a_day.classes.sampels.one2many;
 /*
 
 import java.util.List;

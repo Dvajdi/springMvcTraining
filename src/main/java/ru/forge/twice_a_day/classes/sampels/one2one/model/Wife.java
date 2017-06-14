@@ -1,4 +1,4 @@
-package ru.forge.twice_a_day.classes.models.one2one.model;
+package ru.forge.twice_a_day.classes.sampels.one2one.model;
 
 import javax.persistence.*;
 import java.io.Serializable;

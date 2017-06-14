@@ -1,10 +1,10 @@
-package ru.forge.twice_a_day.classes.models.one2one;
+package ru.forge.twice_a_day.classes.sampels.one2one;
 
 import org.springframework.context.support.GenericXmlApplicationContext;
-import ru.forge.twice_a_day.classes.models.one2one.model.Husband;
-import ru.forge.twice_a_day.classes.models.one2one.model.Wife;
-import ru.forge.twice_a_day.classes.models.one2one.services.HusbandService;
-import ru.forge.twice_a_day.classes.models.one2one.services.WifeService;
+import ru.forge.twice_a_day.classes.sampels.one2one.model.Husband;
+import ru.forge.twice_a_day.classes.sampels.one2one.model.Wife;
+import ru.forge.twice_a_day.classes.sampels.one2one.services.HusbandService;
+import ru.forge.twice_a_day.classes.sampels.one2one.services.WifeService;
 
 import java.util.List;
 

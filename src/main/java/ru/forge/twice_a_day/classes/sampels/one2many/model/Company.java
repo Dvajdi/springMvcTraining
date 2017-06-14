@@ -1,4 +1,4 @@
-package ru.forge.twice_a_day.classes.models.one2many.model;
+package ru.forge.twice_a_day.classes.sampels.one2many.model;
 
 import java.io.Serializable;
 import java.util.Set;
