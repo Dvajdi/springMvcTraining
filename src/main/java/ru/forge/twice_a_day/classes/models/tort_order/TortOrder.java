@@ -3,6 +3,7 @@ package ru.forge.twice_a_day.classes.models.tort_order;
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 import org.springframework.format.annotation.DateTimeFormat;
+import ru.forge.twice_a_day.classes.models.client.Client;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -21,9 +22,9 @@ public class TortOrder implements Serializable {
     @DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
     private DateTime orderDate;
 
-
-
-
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "client_id")
+    private Client client;
 
     public Long getId() {
         return id;
@@ -42,7 +43,13 @@ public class TortOrder implements Serializable {
     }
 
 
+    public Client getClient() {
+        return client;
+    }
 
+    public void setClient(Client client) {
+        this.client = client;
+    }
 
     @Override
     public String toString() {

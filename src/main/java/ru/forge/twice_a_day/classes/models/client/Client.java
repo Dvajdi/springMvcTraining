@@ -5,6 +5,7 @@ import ru.forge.twice_a_day.classes.models.tort_order.TortOrder;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -31,7 +32,7 @@ public class Client implements Serializable{
     private String description;
 
     @OneToMany(mappedBy = "client",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private Set<TortOrder> tortOrders;
+    private Set<TortOrder> tortOrders = new HashSet<TortOrder>();
 
     public Client() {
     }
@@ -51,7 +52,24 @@ public class Client implements Serializable{
         this.description = description;
     }
 
-
+    public Client(int version,
+                  String firstName,
+                  String lastName,
+                  String address,
+                  String phoneNumber,
+                  String mailBox,
+                  String description,
+                  Set<TortOrder> tortOrders
+    ) {
+        this.version = version;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.mailBox = mailBox;
+        this.description = description;
+        this.tortOrders = tortOrders;
+    }
 
     public Long getId() {
         return id;
@@ -117,12 +135,29 @@ public class Client implements Serializable{
         this.description = description;
     }
 
+    public Set<TortOrder> getTortOrders() {
+        return tortOrders;
+    }
+
+    public void setTortOrders(Set<TortOrder> tortOrders) {
+        this.tortOrders = tortOrders;
+    }
+
     @Transient
     String testNotNull(String str){
         if(str!=null){return str;}
         return "не указана";
     }
 
+    @Transient
+    String formatSetToString(Set set){
+        StringBuffer sb = new StringBuffer("");
+        for(Object s:set){
+            sb.append(s.toString());
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
     @Override
     public String toString() {
 
@@ -133,6 +168,6 @@ public class Client implements Serializable{
                 ", phoneNumber='" + testNotNull(phoneNumber) + '\'' +
                 ", mailBox='" + testNotNull(mailBox) + '\'' +
                 ", description='" + testNotNull(description) + '\'' +
-                '}';
+                '}'+formatSetToString(tortOrders);
     }
 }
