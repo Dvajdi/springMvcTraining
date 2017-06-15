@@ -36,7 +36,7 @@ public class TortOrderTest {
     }
 
     @Test
-    public void deleteContactTest(){
+    public void deleteTortTest(){
         TortOrderService tortOrderService = ContextUtils.getContext().getBean("tortOrderService",TortOrderService.class);
         List<TortOrder> orders = tortOrderService.findAll();
         int ordersQuantity = orders.size();
