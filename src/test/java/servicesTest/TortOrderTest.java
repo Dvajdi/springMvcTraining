@@ -16,10 +16,12 @@ import java.util.List;
 public class TortOrderTest {
     @Test
     public void checkCreateTortOrderService(){
-        TortOrderService tortOrderService = ContextUtils.getContext().getBean("tortOrderService",TortOrderService.class);
+        TortOrderService tortOrderService =
+                (TortOrderService) ContextUtils.getService("tortOrderService");
         List<TortOrder> orders = tortOrderService.findAll();
-        PrintUtils.listEntities(orders);
-        Assert.assertTrue(orders.size()!=0);
+        System.out.println(orders.get(0));
+        //PrintUtils.listEntities(orders);
+        //Assert.assertTrue(orders.size()!=0);
     }
 
     @Test
@@ -29,7 +31,7 @@ public class TortOrderTest {
         int ordersQuantity = orders.size();
 
         TortOrder tortOrder = new TortOrder();
-        tortOrder.setOrderDate(new DateTime());
+        tortOrder.setOps("ghghgh");
 
         tortOrderService.save(tortOrder);
         Assert.assertTrue(ordersQuantity<tortOrderService.findAll().size());
@@ -41,8 +43,12 @@ public class TortOrderTest {
         List<TortOrder> orders = tortOrderService.findAll();
         int ordersQuantity = orders.size();
 
+        PrintUtils.listEntities(orders);
         TortOrder tortOrder = orders.get(ordersQuantity-1);
+
+        System.out.println(tortOrder);
         tortOrderService.delete(tortOrder);
+
 
         Assert.assertTrue(ordersQuantity-tortOrderService.findAll().size()==1);
     }

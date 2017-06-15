@@ -1,8 +1,10 @@
 package ru.forge.twice_a_day.classes.models.tort_order;
 
-import org.hibernate.annotations.Type;
-import org.joda.time.DateTime;
-import org.springframework.format.annotation.DateTimeFormat;
+
+import lombok.Getter;
+import lombok.Setter;
+import ru.forge.twice_a_day.classes.models.client.Client;
+
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,33 +15,44 @@ public class TortOrder implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
+    @Getter
+    @Setter
     private Long id;
-    @Column(name="order_date")
-    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-    @DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
-    private DateTime orderDate;
 
-    public Long getId() {
-        return id;
+    @Column(name="ops")
+    @Getter
+    @Setter
+    private String ops;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "client_id")
+    @Getter
+    @Setter
+    private Client client;
+
+
+
+    public TortOrder() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public TortOrder(String ops) {
+        this.ops = ops;
     }
 
-    public DateTime getOrderDate() {
-        return orderDate;
+    public TortOrder(String ops, Client client) {
+        this.ops = ops;
+        this.client = client;
     }
 
-    public void setOrderDate(DateTime orderDate) {
-        this.orderDate = orderDate;
-    }
+
+
+
 
     @Override
     public String toString() {
         return "TortOrder{" +
                 "id=" + id +
-                ", orderDate=" + orderDate +
-                '}';
+                ", ops='" + ops + '\'' +
+                ", ";
     }
 }
