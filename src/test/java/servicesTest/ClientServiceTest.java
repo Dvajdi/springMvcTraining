@@ -20,5 +20,23 @@ public class ClientServiceTest {
         Assert.assertTrue(clients.size()!=0);
     }
 
+    @Test
+    public void saveTest(){
+        ClientService clientService = ContextUtils.getContext().getBean("clientService",ClientService.class);
+        List<Client> clients = clientService.findAll();
+        int clientQuantity = clients.size();
+        clientService.save(new Client(0,"TestName"));
+        Assert.assertTrue(clientQuantity<clientService.findAll().size());
+    }
+
+    @Test
+    public void deleteTest(){
+        ClientService clientService = ContextUtils.getContext().getBean("clientService",ClientService.class);
+        List<Client> clients = clientService.findAll();
+        int clientQuantity = clients.size();
+        clientService.delete(clients.get(clientQuantity-1));
+        Assert.assertTrue(clientQuantity>clientService.findAll().size());
+    }
+
 
 }

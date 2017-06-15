@@ -153,8 +153,7 @@ public class Client implements Serializable{
     String formatSetToString(Set set){
         StringBuffer sb = new StringBuffer("");
         for(Object s:set){
-            sb.append(s.toString());
-            sb.append("\n");
+            sb.append("\n"+"\t"+s.toString());
         }
         return sb.toString();
     }

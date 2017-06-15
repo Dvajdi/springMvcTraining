@@ -41,6 +41,8 @@ public class TortOrderServiceImpl implements TortOrderService{
 
     public void delete(TortOrder tortOrder) {
         TortOrder tortOrderMerge = em.merge(tortOrder);
+        System.out.println(tortOrder);
+        System.out.println(tortOrderMerge);
         em.remove(tortOrderMerge);
     }
 }
