@@ -34,7 +34,7 @@ public class ProductServiceTest implements BaseServiceTest {
         Product product = new Product("Что-то");
         productService.save(product);
         Assert.assertTrue(productsQuantity<productService.listAll().size());
-        PrintUtils.listEntities(productService.listAll());
+
     }
 
     @Override
